@@ -1,0 +1,13 @@
+[Unit]
+Description=Alfred Project - Muscle module
+
+
+[Service]
+Type=simple
+User=alfred
+EnvironmentFile=/etc/default/alfred
+ExecStart=/bin/bash -c '. {{ plugin_virtualenv_path }}/bin/activate && {{ plugin_content_path }}/{{ plugin_name }}.py $ALFRED_SPINE_INPUT $ALFRED_SPINE_OUTPUT'
+
+
+[Install]
+WantedBy=multi-user.target
