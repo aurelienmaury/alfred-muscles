@@ -15,6 +15,7 @@ def main(cli_args):
             try:
                 message = spine_output.recv_string(flags=zmq.NOBLOCK)
                 spine_input.send_string('/alfred/cli-output/muscle received ' + message)
+
             except zmq.Again:
                 pass
     except KeyboardInterrupt:
@@ -43,6 +44,12 @@ def get_arg_by_index_or_default_env(cli_args, arg_index, env_key):
             os.environ[env_key]
         except KeyError:
             sys.exit("Could not find Alfred's input socket from cli nor env var " + env_key)
+
+
+def run(command):
+    proc = subprocess.Popen(command, bufsize=0, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    stdout, stderr = proc.communicate()
+    return stdout, stderr, proc.returncode
 
 
 if __name__ == '__main__':
