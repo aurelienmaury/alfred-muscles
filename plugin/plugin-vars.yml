@@ -2,3 +2,7 @@
 alfred_plugin:
   pip_packages:
     - pyzmq
+  muscles_plugins:
+    - name: 'alfred-cli'
+      url: 'https://github.com/aurelienmaury/galaxie.git'
+      version: 'HEAD'

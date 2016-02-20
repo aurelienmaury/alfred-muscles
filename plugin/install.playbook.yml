@@ -19,10 +19,6 @@
 - name: checking presence of grow playbook
   stat:
     path="{{ plugin_content_path }}/plugin/grow.playbook.yml"
-
-- name: checking presence of grow playbook
-  stat:
-    path="{{ plugin_content_path }}/plugin/grow.playbook.yml"
   register: grow_playbook
 
 - include: "{{ plugin_content_path }}/plugin/grow.playbook.yml"

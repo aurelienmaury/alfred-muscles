@@ -1,0 +1,7 @@
+- name: grow muscle
+  git:
+    repo="{{ item.url }}"
+    dest="{{ plugin_content_path }}/muscles/{{ item.name }}"
+    version="{{ item.version }}"
+    accept_hostkey=yes
+  with_items: "{{ alfred.modules }}"
