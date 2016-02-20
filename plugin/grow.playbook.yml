@@ -1,7 +1,8 @@
 - name: grow muscle
+  become_user: root
   git:
     repo="{{ item.url }}"
     dest="{{ plugin_content_path }}/muscles/{{ item.name }}"
     version="{{ item.version }}"
     accept_hostkey=yes
-  with_items: "{{ alfred.modules }}"
+  with_items: "{{ alfred_plugin.muscles_plugins }}"
